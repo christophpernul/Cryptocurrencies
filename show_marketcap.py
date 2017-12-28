@@ -9,14 +9,15 @@ import json
 import requests
 from datetime import date
 
-year = date.today().year
-weeknr = date.today().isocalendar()[1]
+#year = date.today().year
+#weeknr = date.today().isocalendar()[1]
+date = date.today()
 
 
 print "Checking Market Capitalization of Top 100 Cryptocurrencies\n"
 r = requests.get("https://api.coinmarketcap.com/v1/ticker/")
 y = json.loads(r.text)
-with open("data/year_{0}_week_{1}.json".format(year, weeknr), 'w') as ofile:
+with open("data/marketcap_{0}.json".format(date), 'w') as ofile:
     ofile.write(json.dumps(y))
 
 
